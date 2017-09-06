@@ -23,31 +23,10 @@ app.use(
         host     : 'localhost',
         user     : 'root',
         password : 'root',
-        database : 'classroomshoppers',
+        database : 'classroomfriends',
         debug    : false //set true if you wanna see debug logger
     },'request')
 );
-
-// ------------------------------------------------------------
-// static pages
-
-app.get('/404',function(req,res){
-    res.render('404');
-});
-
-app.get('/faq',function(req,res){
-    res.render('faq');
-});
-
-app.get('/about',function(req,res){
-    res.render('about');
-});
-
-app.get('/sitemap',function(req,res){
-    res.render('sitemap');
-});
-
-// ------------------------------------------------------------
 
 //RESTful route
 var router = express.Router();
@@ -63,6 +42,11 @@ router.use(function(req, res, next) {
 
 
 // -----------------------------------------------------------------------------
+var login = router.route('/login');
+
+login.get(function(req,res,next){
+  res.render('index-register');
+});
 
 var home = router.route('/');
 
@@ -84,7 +68,7 @@ home.all(function(req,res,next){
 home.get(function(req,res,next){
 
     var user_id = req.params.user_id;
-    res.render('index');
+    res.render('newsfeed');
 
     req.getConnection(function(err,conn){
 
