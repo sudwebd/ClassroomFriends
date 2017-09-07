@@ -16,28 +16,32 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `userdetail`
+-- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `userdetail`;
+DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `userdetail` (
-  `emailId` varchar(100) NOT NULL,
+CREATE TABLE `users` (
   `name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
-  PRIMARY KEY (`emailId`)
+  `dob` varchar(100) NOT NULL,
+  `gender` varchar(45) NOT NULL,
+  `city` varchar(100) NOT NULL,
+  `country` varchar(100) NOT NULL,
+  PRIMARY KEY (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `userdetail`
+-- Dumping data for table `users`
 --
 
-LOCK TABLES `userdetail` WRITE;
-/*!40000 ALTER TABLE `userdetail` DISABLE KEYS */;
-INSERT INTO `userdetail` VALUES ('hkbansal@gmail.com','Harsh Bansal','iitr'),('manish@gmail.com','ManishKumar','manish'),('paras@gmail.com','Paras Jindal','iitr'),('ravi@gmail.com','Ravi Sharma','iitr'),('submiit@gmail.com','ShubhamMadheysia','shubham'),('submiitr07@gmail.com','Shubham Madheysia','iitr'),('vkthakur@gmail.com','Vikrant Thakur','iitr');
-/*!40000 ALTER TABLE `userdetail` ENABLE KEYS */;
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES ('Sarah Cruiz','sarah@gmail.com','iitr','631132200000','Male','Roorkee','Australia'),('Shubham Madheysia','submiitr07@gmail.com','iitr','773519400000','Male','GORAKHPUR','India');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -49,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-09-06 16:58:29
+-- Dump completed on 2017-09-07 15:47:46
