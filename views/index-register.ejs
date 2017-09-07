@@ -56,17 +56,17 @@
                     <div class="row">
                       <div class="form-group col-xs-6">
                         <label for="firstname" class="sr-only">First Name</label>
-                        <input id="firstname" class="form-control input-group-lg" type="text" name="firstname" title="Enter first name" placeholder="First name"/>
+                        <input id="firstName" class="form-control input-group-lg" type="text" name="firstName" title="Enter first name" placeholder="First name"/>
                       </div>
                       <div class="form-group col-xs-6">
                         <label for="lastname" class="sr-only">Last Name</label>
-                        <input id="lastname" class="form-control input-group-lg" type="text" name="lastname" title="Enter last name" placeholder="Last name"/>
+                        <input id="lastName" class="form-control input-group-lg" type="text" name="lastName" title="Enter last name" placeholder="Last name"/>
                       </div>
                     </div>
                     <div class="row">
                       <div class="form-group col-xs-12">
                         <label for="email" class="sr-only">Email</label>
-                        <input id="email" class="form-control input-group-lg" type="text" name="Email" title="Enter Email" placeholder="Your Email"/>
+                        <input id="email" class="form-control input-group-lg" type="text" name="email" title="Enter Email" placeholder="Your Email"/>
                       </div>
                     </div>
                     <div class="row">
@@ -79,7 +79,7 @@
                       <p class="birth"><strong>Date of Birth</strong></p>
                       <div class="form-group col-sm-3 col-xs-6">
                         <label for="month" class="sr-only"></label>
-                        <select class="form-control" id="day">
+                        <select class="form-control" id="day" name="day">
                           <option value="Day" disabled selected>Day</option>
 													<%  for(var i = 1;i < 31;i++) { %>
 														<option><%=i%></option>
@@ -88,17 +88,17 @@
                       </div>
                       <div class="form-group col-sm-3 col-xs-6">
                         <label for="month" class="sr-only"></label>
-                        <select class="form-control" id="month">
+                        <select class="form-control" id="month" name="month">
                           <option value="month" disabled selected>Month</option>
 													<% var month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 														for(var i = 0;i < month.length;i++) { %>
-															<option><%=month[i]%></option>
+															<option value="<%=(i+1)%>"><%=month[i]%></option>
 														<% } %>
                         </select>
                       </div>
                       <div class="form-group col-sm-6 col-xs-12">
                         <label for="year" class="sr-only"></label>
-                        <select class="form-control" id="year">
+                        <select class="form-control" id="year" name="year">
                           <option value="year" disabled selected>Year</option>
 													<%  for(var i = 2017;i > 1947 ;i--) { %>
 														<option><%=i%></option>
@@ -108,10 +108,10 @@
                     </div>
                     <div class="form-group gender">
                       <label class="radio-inline">
-                        <input type="radio" name="optradio" checked>Male
+                        <input type="radio" name="male" checked>Male
                       </label>
                       <label class="radio-inline">
-                        <input type="radio" name="optradio">Female
+                        <input type="radio" name="female">Female
                       </label>
                     </div>
                     <div class="row">
@@ -121,7 +121,7 @@
                       </div>
                       <div class="form-group col-xs-6">
                         <label for="country" class="sr-only"></label>
-                        <select class="form-control" id="country">
+                        <select class="form-control" id="country" name="country">
                           <option value="country" disabled selected>Country</option>
 													<% var country = ["Afghanistan", "land Islands", "Albania", "Algeria", "American Samoa", "Andorra", "Angola", "Anguilla", "Antarctica", "Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia, Plurinational State of", "Bonaire, Sint Eustatius and Saba", "Bosnia and Herzegovina", "Botswana", "Bouvet Island", "Brazil", "British Indian Ocean Territory", "Brunei Darussalam", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Cayman Islands", "Central African Republic", "Chad", "Chile", "China", "Christmas Island", "Cocos (Keeling) Islands", "Colombia", "Comoros", "Congo", "Congo, the Democratic Republic of the", "Cook Islands", "Costa Rica", "C�te d'Ivoire", "Croatia", "Cuba", "Cura�ao", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Falkland Islands (Malvinas)", "Faroe Islands", "Fiji", "Finland", "France", "French Guiana", "French Polynesia", "French Southern Territories", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guadeloupe", "Guam", "Guatemala", "Guernsey", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Heard Island and McDonald Islands", "Holy See (Vatican City State)", "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran, Islamic Republic of", "Iraq", "Ireland", "Isle of Man", "Israel", "Italy", "Jamaica", "Japan", "Jersey", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Korea, Democratic People's Republic of", "Korea, Republic of", "Kuwait", "Kyrgyzstan", "Lao People's Democratic Republic", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macao", "Macedonia, the former Yugoslav Republic of", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Martinique", "Mauritania", "Mauritius", "Mayotte", "Mexico", "Micronesia, Federated States of", "Moldova, Republic of", "Monaco", "Mongolia", "Montenegro", "Montserrat", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Niue", "Norfolk Island", "Northern Mariana Islands", "Norway", "Oman", "Pakistan", "Palau", "Palestinian Territory, Occupied", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Pitcairn", "Poland", "Portugal", "Puerto Rico", "Qatar", "R�union", "Romania", "Russian Federation", "Rwanda", "Saint Barth�lemy", "Saint Helena, Ascension and Tristan da Cunha", "Saint Kitts and Nevis", "Saint Lucia", "Saint Martin (French part)", "Saint Pierre and Miquelon", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Sint Maarten (Dutch part)", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Georgia and the South Sandwich Islands", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Svalbard and Jan Mayen", "Swaziland", "Sweden", "Switzerland", "Syrian Arab Republic", "Taiwan, Province of China", "Tajikistan", "Tanzania, United Republic of", "Thailand", "Timor-Leste", "Togo", "Tokelau", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Turks and Caicos Islands", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "United States Minor Outlying Islands", "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela, Bolivarian Republic of", "Viet Nam", "Virgin Islands, British", "Virgin Islands, U.S.", "Wallis and Futuna", "Western Sahara", "Yemen", "Zambia", "Zimbabwe"];
 													for(var i = 0;i < country.length;i++) { %>
@@ -131,8 +131,10 @@
                       </div>
                     </div>
                   </form><!--Register Now Form Ends-->
+									</br>
+									<p style="color: #660000; background-color: #ffcccc; padding-left: 20px" id="register-error"></p>
                   <p><a href="index-register.html#login" data-toggle="tab">Already have an account?</a></p>
-                  <button class="btn btn-primary">Register Now</button>
+                  <button onclick="register('signUp')" class="btn btn-primary">Register Now</button>
                 </div><!--Registration Form Contents Ends-->
 
                 <!--Login-->
@@ -145,7 +147,7 @@
                      <div class="row">
                       <div class="form-group col-xs-12">
                         <label for="my-email" class="sr-only">Email</label>
-                        <input id="my-email" class="form-control input-group-lg" type="text" name="Email" title="Enter Email" placeholder="Your Email"/>
+                        <input id="my-email" class="form-control input-group-lg" type="text" name="email" title="Enter Email" placeholder="Your Email"/>
                       </div>
                     </div>
                     <div class="row">
@@ -155,8 +157,9 @@
                       </div>
                     </div>
                   </form><!--Login Form Ends-->
+									<p style="color: #660000; background-color: #ffcccc; padding-left: 20px" id="login-error"></p>
                   <p><a href="index-register.html#">Forgot Password?</a></p>
-                  <button class="btn btn-primary">Login Now</button>
+                  <button onclick="register('signIn')" class="btn btn-primary">Login Now</button>
                 </div>
               </div>
             </div>
@@ -190,6 +193,100 @@
     <script src="js/jquery.appear.min.js"></script>
 		<script src="js/jquery.incremental-counter.js"></script>
     <script src="js/script.js"></script>
+		<script>
+			function register(label){
+				debugger;
+				var check = false;
+				var errorlabel;
+				if(label == 'signIn'){
+					if($("#my-email").val()=="")
+						errorlabel = "Invalid EmailId";
+					else if($("#my-password").val()=="")
+						errorlabel = "Invalid Password";
+					else
+						check = "true";
+				}
+				else {
+					if($("#firstName").val()=="")
+						errorlabel = "Empty firstName";
+					else if($("#email").val()=="")
+						errorlabel = "Invalid emailId";
+					else if($("#password").val()=="")
+						errorlabel = "Invalid password";
+					else if($("#day").find(":selected").text()=="Day")
+						errorlabel = "Select Birth Day";
+					else if($("#month").find(":selected").text()=="Month")
+						errorlabel = "Select Birth Month";
+					else if($("#year").find(":selected").text()=="Year")
+						errorlabel = "Select Birth Year";
+					else if($("#city").val()=="")
+						errorlabel = "Invalid city";
+					else if($("#country").find(":selected").text()=="Country")
+						errorlabel = "Select Country";
+					else
+						check = "true";
+				}
 
+				if(check===false){
+					if(label == 'signIn'){
+						$("#login-error").text(errorlabel);
+						setTimeout(function(){ $("#login-error").text(''); }, 5000);
+					}
+					else {
+						$("#register-error").text(errorlabel);
+						setTimeout(function(){ $("#register-error").text(''); }, 5000);
+					}
+				}
+				else {
+
+					var details = (label == 'signIn') ? $("#Login_form").serialize() : $("#registration_form").serialize() ;
+			    $.ajax({
+			      url:"/login",
+			      type:"post",
+			      data: details,
+			      success:function(res){
+			        debugger;
+			        // Check browser support
+			        if (typeof(Storage) !== "undefined"){
+								if (label == 'signIn') {
+									localStorage.setItem("name", res);
+				          localStorage.setItem("email", $("#my-email").val());
+								} else {
+									localStorage.setItem("name", $("#firstName").val()+" "+$("#lastName").val());
+				          localStorage.setItem("email", $("#email").val());
+								}
+			        }
+
+			        window.location.href = '/newsfeed';
+			        return false;
+			      },
+			      error:function(xhr, status, error){
+			        debugger;
+
+			        var err = '';
+			        if (error == "Bad Request")
+			          err = "Invalid credinationals";
+			        else {
+			          $.each(JSON.parse(xhr.responseText) , function(i, item) {
+			            err += item.msg;
+			          });
+			        }
+
+							if(label == 'signIn'){
+								$("#login-error").text(err);
+								setTimeout(function(){ $("#login-error").text(''); }, 5000);
+							}
+							else {
+								$("#register-error").text(err);
+								setTimeout(function(){ $("#register-error").text(''); }, 5000);
+							}
+							
+			        return false;
+			      }
+			    });
+				}
+			}
+
+		</script>
 	</body>
 </html>

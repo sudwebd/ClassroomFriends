@@ -48,7 +48,62 @@ login.get(function(req,res,next){
   res.render('index-register');
 });
 
-var home = router.route('/');
+login.post(function(req,res,next){
+
+    //get data
+    var data;
+    if (req.body.firstName==undefined) { //  login
+        data = {
+            email:req.body.email,
+            password:req.body.password
+         };
+    }
+    else {                        //  register
+      var newDate = req.body.day+"/"+req.body.month+"/"+req.body.year;
+      var gender = (req.body.male!=undefined) ? "Male" : "Female" ;
+      data = {
+          name:req.body.firstName+" "+req.body.lastName,
+          email:req.body.email,
+          password:req.body.password,
+          dob:new Date(newDate).getTime(),
+          gender:gender,
+          city:req.body.city,
+          country:req.body.country
+       };
+    }
+
+    // inserting into mysql
+    req.getConnection(function (err, conn){
+        if (err)
+          return next("Cannot Connect");
+
+        if (req.body.firstName==undefined){   //login
+          console.log("SELECT name FROM classroomfriends.users WHERE email = '"+data.email+"' and password = '"+data.password+"' ");
+          var query = conn.query("SELECT name FROM classroomfriends.users WHERE email = '"+data.email+"' and password = '"+data.password+"' ", function(err,rows){
+              if(err){
+                console.log(err);
+                  return next("Mysql error, check your query");
+              }
+              console.log("rows-->>>",rows);
+              if(rows.length==0)
+                res.status(400).json("Invalid emailID - password");
+              else
+              res.status(200).json(rows[0].name);
+           });
+        }
+        else{         //register
+          var query = conn.query("INSERT INTO classroomfriends.users set ? ", data, function(err, rows){
+             if(err){
+                  console.log(err);
+                  return next("Mysql error, check your query");
+             }
+             res.sendStatus(200);
+          });
+        }
+     });
+});
+
+var home = router.route('/newsfeed');
 
 /*------------------------------------------------------
 route.all is extremely useful. you can use it to do
