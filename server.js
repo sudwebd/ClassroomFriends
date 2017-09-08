@@ -147,168 +147,168 @@ home.get(function(req,res,next){
 
 });
 
-//update data
-home.put(function(req,res,next){
-    var user_id = req.params.user_id;
+// //update data
+// home.put(function(req,res,next){
+//     var user_id = req.params.user_id;
 
-    //validation
-    req.assert('name','Name is required').notEmpty();
-    req.assert('email','A valid email is required').isEmail();
-    req.assert('password','Enter a password 6 - 20').len(6,20);
+//     //validation
+//     req.assert('name','Name is required').notEmpty();
+//     req.assert('email','A valid email is required').isEmail();
+//     req.assert('password','Enter a password 6 - 20').len(6,20);
 
-    var errors = req.validationErrors();
-    if(errors){
-        res.status(422).json(errors);
-        return;
-    }
+//     var errors = req.validationErrors();
+//     if(errors){
+//         res.status(422).json(errors);
+//         return;
+//     }
 
-    //get data
-    var data = {
-        name:req.body.name,
-        emailId:req.body.email,
-        password:req.body.password
-     };
+//     //get data
+//     var data = {
+//         name:req.body.name,
+//         emailId:req.body.email,
+//         password:req.body.password
+//      };
 
-    //inserting into mysql
-    req.getConnection(function (err, conn){
+//     //inserting into mysql
+//     req.getConnection(function (err, conn){
 
-        if (err) return next("Cannot Connect");
+//         if (err) return next("Cannot Connect");
 
-        var query = conn.query("UPDATE t_user set ? WHERE user_id = ? ",[data,user_id], function(err, rows){
+//         var query = conn.query("UPDATE t_user set ? WHERE user_id = ? ",[data,user_id], function(err, rows){
 
-           if(err){
-                console.log(err);
-                return next("Mysql error, check your query");
-           }
+//            if(err){
+//                 console.log(err);
+//                 return next("Mysql error, check your query");
+//            }
 
-          res.sendStatus(200);
+//           res.sendStatus(200);
 
-        });
+//         });
 
-     });
+//      });
 
-});
+// });
 
-//delete data
-home.delete(function(req,res,next){
+// //delete data
+// home.delete(function(req,res,next){
 
-    var user_id = req.params.user_id;
+//     var user_id = req.params.user_id;
 
-     req.getConnection(function (err, conn) {
+//      req.getConnection(function (err, conn) {
 
-        if (err) return next("Cannot Connect");
+//         if (err) return next("Cannot Connect");
 
-        var query = conn.query("DELETE FROM t_user  WHERE user_id = ? ",[user_id], function(err, rows){
+//         var query = conn.query("DELETE FROM t_user  WHERE user_id = ? ",[user_id], function(err, rows){
 
-             if(err){
-                console.log(err);
-                return next("Mysql error, check your query");
-             }
+//              if(err){
+//                 console.log(err);
+//                 return next("Mysql error, check your query");
+//              }
 
-             res.sendStatus(200);
+//              res.sendStatus(200);
 
-        });
-        //console.log(query.sql);
+//         });
+//         //console.log(query.sql);
 
-     });
-});
+//      });
+// });
 
-var createAcc = router.route('/create-account');
+// var createAcc = router.route('/create-account');
 
-createAcc.get(function(req,res,next){
-  res.render('create-account');
-});
+// createAcc.get(function(req,res,next){
+//   res.render('create-account');
+// });
 
-createAcc.post(function(req,res,next){
+// createAcc.post(function(req,res,next){
 
-    //server side validation*********
-    req.assert('firstName','First Name is required').matches(/[^\s\\]/);
-    var errors = req.validationErrors();
-    if(errors){
-        res.status(422).json(errors);
-        return;
-    }
+//     //server side validation*********
+//     req.assert('firstName','First Name is required').matches(/[^\s\\]/);
+//     var errors = req.validationErrors();
+//     if(errors){
+//         res.status(422).json(errors);
+//         return;
+//     }
 
-    req.assert('emailId','A valid email is required').isEmail();
-    errors = req.validationErrors();
-    if(errors){
-        res.status(422).json(errors);
-        return;
-    }
+//     req.assert('emailId','A valid email is required').isEmail();
+//     errors = req.validationErrors();
+//     if(errors){
+//         res.status(422).json(errors);
+//         return;
+//     }
 
-    req.assert('password','Enter a password 6 - 20').len(6,20);
-    errors = req.validationErrors();
-    if(errors){
-        res.status(422).json(errors);
-        return;
-    }
+//     req.assert('password','Enter a password 6 - 20').len(6,20);
+//     errors = req.validationErrors();
+//     if(errors){
+//         res.status(422).json(errors);
+//         return;
+//     }
 
-    //get data
-    var data = {
-        name:req.body.firstName+req.body.lastName,
-        emailId:req.body.emailId,
-        password:req.body.password
-     };
+//     //get data
+//     var data = {
+//         name:req.body.firstName+req.body.lastName,
+//         emailId:req.body.emailId,
+//         password:req.body.password
+//      };
 
-    //inserting into mysql
-    req.getConnection(function (err, conn){
-        if (err) return next("Cannot Connect");
+//     //inserting into mysql
+//     req.getConnection(function (err, conn){
+//         if (err) return next("Cannot Connect");
 
-        var query = conn.query("INSERT INTO classroomshoppers.userdetail set ? ", data, function(err, rows){
-           if(err){
-                console.log(err);
-                return next("Mysql error, check your query");
-           }
+//         var query = conn.query("INSERT INTO classroomshoppers.userdetail set ? ", data, function(err, rows){
+//            if(err){
+//                 console.log(err);
+//                 return next("Mysql error, check your query");
+//            }
 
-           res.sendStatus(200);
-        });
-     });
-});
+//            res.sendStatus(200);
+//         });
+//      });
+// });
 
-var loginAcc = router.route('/login-account');
+// var loginAcc = router.route('/login-account');
 
-loginAcc.get(function(req,res,next){
-  res.render('login-account');
-});
+// loginAcc.get(function(req,res,next){
+//   res.render('login-account');
+// });
 
-loginAcc.put(function(req,res,next){
-  console.error("inside post--------------");
+// loginAcc.put(function(req,res,next){
+//   console.error("inside post--------------");
 
-  req.assert('emailId','A valid email is required').isEmail();
-  errors = req.validationErrors();
-  if(errors){
-      res.status(422).json(errors);
-      return;
-  }
+//   req.assert('emailId','A valid email is required').isEmail();
+//   errors = req.validationErrors();
+//   if(errors){
+//       res.status(422).json(errors);
+//       return;
+//   }
 
-  req.assert('password','Empty password not alllowed').notEmpty();
-  errors = req.validationErrors();
-  if(errors){
-      res.status(422).json(errors);
-      return;
-  }
+//   req.assert('password','Empty password not alllowed').notEmpty();
+//   errors = req.validationErrors();
+//   if(errors){
+//       res.status(422).json(errors);
+//       return;
+//   }
 
-  var emailId = req.body.emailId;
-  var password = req.body.password;
+//   var emailId = req.body.emailId;
+//   var password = req.body.password;
 
-  req.getConnection(function(err,conn){
-      if (err){
-        console.log(err);
-        return next("Cannot Connect");
-      }
+//   req.getConnection(function(err,conn){
+//       if (err){
+//         console.log(err);
+//         return next("Cannot Connect");
+//       }
 
-      var query = conn.query("SELECT name FROM classroomshoppers.userdetail WHERE emailId = '"+emailId+"' and password = '"+password+"' ", function(err,rows){
-          if(err){
-            console.log(err);
-              return next("Mysql error, check your query");
-          }
-          if(rows.length==0)
-            res.status(400).json("Invalid emailID - password");
-          else
-          res.status(200).json(rows[0].name);
-       });
-  });
-});
+//       var query = conn.query("SELECT name FROM classroomshoppers.userdetail WHERE emailId = '"+emailId+"' and password = '"+password+"' ", function(err,rows){
+//           if(err){
+//             console.log(err);
+//               return next("Mysql error, check your query");
+//           }
+//           if(rows.length==0)
+//             res.status(400).json("Invalid emailID - password");
+//           else
+//           res.status(200).json(rows[0].name);
+//        });
+//   });
+// });
 
 
 
