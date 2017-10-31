@@ -86,7 +86,100 @@ Create table SentMessage(
     foreign key(email1) references users(email),
     foreign key(email2) references users(email)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-    
+
+Create table Work(
+`designation` varchar(100) not null,
+`email1` varchar(100) not null,
+`company` varchar(100) not null,
+`st` DATETIME,
+`en` DATETIME,
+`description` varchar(100) not null,
+primary key(designation,email1,company),
+foreign key(email1) references users(email)
+);
+
+create table University(
+	universityName varchar(100) not null,
+	city varchar(100) not null,
+	primary key(universityName,city)
+);
+
+create table WorkPlace(
+	company varchar(100) not null,
+	city varchar(100) not null,
+	primary key(company,city)
+);
+
+Create table Work(
+designation varchar(100) not null,
+email1 varchar(100) not null,
+company varchar(100) not null,
+st DATETIME,
+en DATETIME,
+description varchar(100) not null,
+primary key(designation,email1,company),
+foreign key(email1) references users(email),
+foreign key(company) references users(company)
+);
+
+Create table Education(
+email1 varchar(100) not null,
+universityName varchar(100) not null,
+st DATETIME,
+en DATETIME,
+description varchar(100) not null,
+primary key(email1,universityName),
+foreign key(email1) references users(email),
+foreign key(universityName) references University(universityName)
+);
+
+create table Article(
+	articleid varchar(100) not null,
+	email1 varchar(100) not null,
+	description varchar(100) not null,
+	timeposted DATETIME,
+	imageURL varchar(200) not null,
+	primary key(articleid),
+	);
+  
+  create table ArticleLiked(
+	email1 varchar(100) not null,
+	articleid varchar(100) not null,
+	primary key(email1,articleid),
+	foreign key(email1) references users(email),
+	foreign key(articleid) references Article(articleid)
+);
+
+create table Viewed(
+	email1 varchar(100) not null,
+	articleid varchar(100) not null,
+	ViewTime DATETIME,
+	primary key(email1,articleid),
+	foreign key(email1) references users(email),
+	foreign key(articleid) references Article(articleid)
+);
+
+create table CommentedOn(
+	email1 varchar(100) not null,
+	articleid varchar(100) not null,
+	CommentTime DATETIME,
+	Comment varchar(200) not null,
+	primary key(email1,articleid,CommentTime),
+	foreign key(email1) references users(email),
+	foreign key(articleid) references Article(articleid)
+);
+
+create table Settings(
+	email1 varchar(100) not null,
+	email2 varchar(100) not null,
+	enablefollow INT(1),
+	sendNotifications INT(1),
+	enableTextMessages INT(1),
+	enableTagging INT(1),
+	primary key(email1,email2),
+	foreign key(email1) references users(email),
+	foreign key(email2) references users(email2)
+);
     
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
