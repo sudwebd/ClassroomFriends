@@ -30,16 +30,16 @@ CREATE TABLE `users` (
   `gender` varchar(45) NOT NULL,
   `city` varchar(100) NOT NULL,
   `country` varchar(100) NOT NULL,
+  `aboutMe` VARCHAR(100) NOT NULL,
+  `tagline` VARCHAR(60) NOT NULL,
+  `coverPicture` VARCHAR(200) NOT NULL,
+  `profilePicture` VARCHAR(200) NOT NULL,
+  `isGraduated` INT(1) NOT NULL,
+  `isActive` INT(1) NOT NULL,
   PRIMARY KEY (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-ALTER TABLE users
-    -> add column aboutMe VARCHAR(100) ,
-    -> add column tagline VARCHAR(60),
-    -> add column coverPicture VARCHAR(200),
-    -> add column profilePicture VARCHAR(200),
-    -> add column isGraduatedure INT(1),
-    -> add column isActive INT(1);
+
 --
 -- Dumping data for table `users`
 --
