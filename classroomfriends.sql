@@ -51,6 +51,43 @@ INSERT INTO `users` VALUES ('Sarah Cruiz','sarah@gmail.com','iitr','631132200000
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
+
+
+create table Interests (
+     `Interest` VARCHAR(60) NOT NULL ,
+     `email` VARCHAR(100) NOT NULL,
+     primary key(Interest,email),
+     foreign key(email) references users(email)
+     ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    
+create table Friends (
+    `email1` VARCHAR(100) NOT NULL,
+    `email2` VARCHAR(100) NOT NULL,
+    `friendsSince` DATETIME ,
+    primary key(email1,email2),
+    foreign key (email1) references users(email),
+    foreign key (email2) references users(email)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+create table Album(
+    `pictureURL` VARCHAR(200) NOT NULL,
+    `email` VARCHAR(100) NOT NULL,
+    primary key(pictureURL,email),
+    foreign key (email) references users(email)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    
+Create table SentMessage( 
+    `messageTimestamp` DATETIME,
+    `email1` varchar(100) not null,
+    `email2` varchar(100) not null,
+    `message` varchar(500) not null,
+    `isSeen` int(1) not null,
+    primary key(messageTimestamp,email1,email2),
+    foreign key(email1) references users(email),
+    foreign key(email2) references users(email)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    
+    
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
