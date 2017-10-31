@@ -96,19 +96,19 @@ Create table Work(
 `description` varchar(100) not null,
 primary key(designation,email1,company),
 foreign key(email1) references users(email)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 create table University(
 	universityName varchar(100) not null,
 	city varchar(100) not null,
 	primary key(universityName,city)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 create table WorkPlace(
 	company varchar(100) not null,
 	city varchar(100) not null,
 	primary key(company,city)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 Create table Work(
 designation varchar(100) not null,
@@ -120,7 +120,7 @@ description varchar(100) not null,
 primary key(designation,email1,company),
 foreign key(email1) references users(email),
 foreign key(company) references users(company)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 Create table Education(
 email1 varchar(100) not null,
@@ -131,7 +131,7 @@ description varchar(100) not null,
 primary key(email1,universityName),
 foreign key(email1) references users(email),
 foreign key(universityName) references University(universityName)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 create table Article(
 	articleid varchar(100) not null,
@@ -140,7 +140,7 @@ create table Article(
 	timeposted DATETIME,
 	imageURL varchar(200) not null,
 	primary key(articleid),
-	);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
   
   create table ArticleLiked(
 	email1 varchar(100) not null,
@@ -148,7 +148,7 @@ create table Article(
 	primary key(email1,articleid),
 	foreign key(email1) references users(email),
 	foreign key(articleid) references Article(articleid)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 create table Viewed(
 	email1 varchar(100) not null,
@@ -157,7 +157,7 @@ create table Viewed(
 	primary key(email1,articleid),
 	foreign key(email1) references users(email),
 	foreign key(articleid) references Article(articleid)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 create table CommentedOn(
 	email1 varchar(100) not null,
@@ -167,7 +167,7 @@ create table CommentedOn(
 	primary key(email1,articleid,CommentTime),
 	foreign key(email1) references users(email),
 	foreign key(articleid) references Article(articleid)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 create table Settings(
 	email1 varchar(100) not null,
@@ -179,7 +179,7 @@ create table Settings(
 	primary key(email1,email2),
 	foreign key(email1) references users(email),
 	foreign key(email2) references users(email2)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
     
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
