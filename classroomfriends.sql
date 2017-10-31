@@ -33,7 +33,13 @@ CREATE TABLE `users` (
   PRIMARY KEY (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
+ALTER TABLE users
+    -> add column aboutMe VARCHAR(100) ,
+    -> add column tagline VARCHAR(60),
+    -> add column coverPicture VARCHAR(200),
+    -> add column profilePicture VARCHAR(200),
+    -> add column isGraduatedure INT(1),
+    -> add column isActive INT(1);
 --
 -- Dumping data for table `users`
 --
