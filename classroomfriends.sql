@@ -46,7 +46,14 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES ('Sarah Cruiz','sarah@gmail.com','iitr','631132200000','Male','Roorkee','Australia'),('Shubham Madheysia','submiitr07@gmail.com','iitr','773519400000','Male','GORAKHPUR','India');
+INSERT INTO `users` 
+VALUES 
+('sarah@gmail.com','Sarah Cruiz','hellopeople','30/12/1999','Male','Roorkee','India','Dancer','tagline','123.png','pewwes.png',0,1),
+('shubhi@gmail.com','Subhi Jain','helloworld','3/1/1991','Female','Ropar','India','Nature Lover','tagline','12223.png','pew22wes.png',1,1),
+('sharma_s@gmail.com','Shyam Sharma','myworld','15/2/1999','Male','Puri','India','Alcoholic','tagline','12345.png','dp.png',0,1),
+('rameshdutta1234@gmail.com','Ramesh Dutta','thisisme','5/9/1989','Male','Kanpur','India','Music Enthusiast','tagline','1234wwd5.png','dpwdwd.png',1,1),
+('jyotiprabhu@gmail.com','Jyoti Prabhu','jyotithegreat','31/10/1997','Female','Mumbai','India','Beach is life','tagline','123421wwd5.png','dpqwqwdwd.png',1,1)
+;
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
