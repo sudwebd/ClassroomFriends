@@ -23,13 +23,19 @@ DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
-  `name` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
+  `name` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `dob` varchar(100) NOT NULL,
   `gender` varchar(45) NOT NULL,
   `city` varchar(100) NOT NULL,
   `country` varchar(100) NOT NULL,
+  `aboutMe` varchar(100) NOT NULL,
+  `tagline` varchar(60) NOT NULL,
+  `coverPicture` varchar(200) NOT NULL,
+  `profilePicture` varchar(200) NOT NULL,
+  `isGraduated` INT(1) NOT NULL,
+  `isActive` INT(1) NOT NULL,
   PRIMARY KEY (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -40,7 +46,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES ('Sarah Cruiz','sarah@gmail.com','iitr','631132200000','Male','Roorkee','Australia'),('Shubham Madheysia','submiitr07@gmail.com','iitr','773519400000','Male','GORAKHPUR','India');
+INSERT INTO `users` VALUES ('sarah@gmail.com','Sarah Cruiz','iitr','631132200000','Male','Roorkee','Australia','GIRL','white','qwertyu','asdfghjk',1,0),('submiitr07@gmail.com','Shubham Madheysia','iitr','773519400000','Male','GORAKHPUR','India','BOI','brown','qwertyu','asdfghjk',1,0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

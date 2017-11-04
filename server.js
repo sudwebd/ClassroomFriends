@@ -22,7 +22,7 @@ app.use(
     connection(mysql,{
         host     : 'localhost',
         user     : 'root',
-        password : 'root',
+        password : 'well',
         database : 'classroomfriends',
         debug    : false //set true if you wanna see debug logger
     },'request')
@@ -62,13 +62,19 @@ login.post(function(req,res,next){
       var newDate = req.body.day+"/"+req.body.month+"/"+req.body.year;
       var gender = (req.body.male!=undefined) ? "Male" : "Female" ;
       data = {
-          name:req.body.firstName+" "+req.body.lastName,
           email:req.body.email,
+          name:req.body.firstName+" "+req.body.lastName,
           password:req.body.password,
           dob:new Date(newDate).getTime(),
           gender:gender,
           city:req.body.city,
-          country:req.body.country
+          country:req.body.country,
+          aboutMe:"",
+          tagline:"",
+          coverPicture:"",
+          profilePicture:"",
+          isGraduated:1,
+          isActive:1
        };
     }
 
@@ -129,7 +135,7 @@ home.get(function(req,res,next){
 
         if (err) return next("Cannot Connect");
 
-        var query = conn.query("SELECT * FROM t_user WHERE user_id = ? ",[user_id],function(err,rows){
+        var query = conn.query("SELECT * FROM users WHERE email = ? ",[user_id],function(err,rows){
 
             if(err){
                 console.log(err);
@@ -150,43 +156,43 @@ home.get(function(req,res,next){
 // //update data
 // home.put(function(req,res,next){
 //     var user_id = req.params.user_id;
-
+//
 //     //validation
 //     req.assert('name','Name is required').notEmpty();
 //     req.assert('email','A valid email is required').isEmail();
 //     req.assert('password','Enter a password 6 - 20').len(6,20);
-
+//
 //     var errors = req.validationErrors();
 //     if(errors){
 //         res.status(422).json(errors);
 //         return;
 //     }
-
+//
 //     //get data
 //     var data = {
 //         name:req.body.name,
 //         emailId:req.body.email,
 //         password:req.body.password
 //      };
-
+//
 //     //inserting into mysql
 //     req.getConnection(function (err, conn){
-
+//
 //         if (err) return next("Cannot Connect");
-
+//
 //         var query = conn.query("UPDATE t_user set ? WHERE user_id = ? ",[data,user_id], function(err, rows){
-
+//
 //            if(err){
 //                 console.log(err);
 //                 return next("Mysql error, check your query");
 //            }
-
+//
 //           res.sendStatus(200);
-
+//
 //         });
-
+//
 //      });
-
+//
 // });
 
 // //delete data
