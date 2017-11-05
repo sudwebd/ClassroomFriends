@@ -131,25 +131,25 @@ home.get(function(req,res,next){
     var user_id = req.params.user_id;
     res.render('newsfeed');
 
-    req.getConnection(function(err,conn){
-
-        if (err) return next("Cannot Connect");
-
-        var query = conn.query("SELECT * FROM users WHERE email = ? ",[user_id],function(err,rows){
-
-            if(err){
-                console.log(err);
-                return next("Mysql error, check your query");
-            }
-
-            //if user not found
-            if(rows.length < 1)
-                return res.send("User Not found");
-
-            res.render('edit',{title:"Edit user",data:rows});
-        });
-
-    });
+    // req.getConnection(function(err,conn){
+    //
+    //     if (err) return next("Cannot Connect");
+    //
+    //     var query = conn.query("SELECT * FROM t_user WHERE user_id = ? ",[user_id],function(err,rows){
+    //
+    //         if(err){
+    //             console.log(err);
+    //             return next("Mysql error, check your query");
+    //         }
+    //
+    //         //if user not found
+    //         if(rows.length < 1)
+    //             return res.send("User Not found");
+    //
+    //         res.render('edit',{title:"Edit user",data:rows});
+    //     });
+    //
+    // });
 
 });
 
