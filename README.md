@@ -28,7 +28,7 @@ server.js
 
 
 
-You're gonna need to create a DB named 'classroomfriends' or whatever you name it,  import classroomfriends.sql
+You're gonna need to create a DB named 'classroomfriends' or whatever you name it,  import classroomfriends.sql.
 
 
 ## Open your Browser
